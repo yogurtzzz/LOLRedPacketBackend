@@ -1,0 +1,17 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://112.74.80.115:3307/lol?serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启SQL语句打印
+  global-config:
+    db-config:
+      id-type: auto # 设置主键递增
