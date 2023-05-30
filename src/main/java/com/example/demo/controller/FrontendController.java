@@ -31,6 +31,11 @@ public class FrontendController {
     @Autowired
     private GameRecordService gameRecordService;
 
+    @GetMapping("/test")
+    public String test() {
+        return "success";
+    }
+
     @GetMapping("/getAllPlayers")
     public List<Player> getAllPlayers() {
         return playerDAO.getAllPlayers();
