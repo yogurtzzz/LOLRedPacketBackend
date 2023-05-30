@@ -2,7 +2,7 @@ package com.example.demo.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.example.demo.data.Player;
+import com.example.demo.data.po.Player;
 import com.example.demo.mapper.PlayerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +17,7 @@ public class PlayerDAO {
 
     public long getIdByName(String name) {
         LambdaQueryWrapper<Player> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(Player::getPlayerName, name);
+        wrapper.eq(Player::getName, name);
         Player player = mapper.selectOne(wrapper);
         return player.getId();
     }
@@ -34,7 +34,7 @@ public class PlayerDAO {
 
     public Player getPlayerByName(String name) {
         LambdaQueryWrapper<Player> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(Player::getPlayerName, name);
+        wrapper.eq(Player::getName, name);
         return mapper.selectOne(wrapper);
     }
 
@@ -54,14 +54,14 @@ public class PlayerDAO {
 
         // 否则, 插入
         Player player = new Player();
-        player.setPlayerName(name);
+        player.setName(name);
         player.setEnabled(true);
         return mapper.insert(player);
     }
 
     public int disablePlayer(String name) {
         LambdaUpdateWrapper<Player> wrapper = new LambdaUpdateWrapper<>();
-        wrapper.eq(Player::getPlayerName, name);
+        wrapper.eq(Player::getName, name);
         Player player = new Player();
         player.setEnabled(false);
         return mapper.update(player, wrapper);
@@ -69,7 +69,7 @@ public class PlayerDAO {
 
     public int enablePlayer(String name) {
         LambdaUpdateWrapper<Player> wrapper = new LambdaUpdateWrapper<>();
-        wrapper.eq(Player::getPlayerName, name);
+        wrapper.eq(Player::getName, name);
         Player player = new Player();
         player.setEnabled(true);
         return mapper.update(player, wrapper);

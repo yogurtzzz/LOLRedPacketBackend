@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.example.demo.data.GameResultEnum;
 import com.example.demo.data.PlayerDetail;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -27,6 +28,8 @@ public class GameRecord {
 
     private GameResultEnum gameResult;
 
+    // 返回给前端的数据, 设置一下日期的格式
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime time;
 }
 

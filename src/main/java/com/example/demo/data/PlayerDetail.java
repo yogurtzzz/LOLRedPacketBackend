@@ -1,5 +1,6 @@
 package com.example.demo.data;
 
+import com.example.demo.data.po.Player;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

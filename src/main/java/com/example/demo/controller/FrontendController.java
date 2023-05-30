@@ -1,21 +1,20 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.GameRecordDAO;
+import com.example.demo.dao.LOLTransactionDAO;
 import com.example.demo.dao.PlayerDAO;
-import com.example.demo.data.*;
 import com.example.demo.data.po.GameRecord;
+import com.example.demo.data.po.LOLTransaction;
+import com.example.demo.data.po.Player;
 import com.example.demo.data.vo.GameRecordVO;
 import com.example.demo.service.GameRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class FrontendController {
@@ -25,6 +24,9 @@ public class FrontendController {
 
     @Autowired
     private GameRecordDAO gameRecordDAO;
+
+    @Autowired
+    private LOLTransactionDAO transactionDAO;
 
     @Autowired
     private GameRecordService gameRecordService;
@@ -60,10 +62,9 @@ public class FrontendController {
     }
 
 
-
     // 保存对局记录
     @PostMapping("/saveGameRecord")
-    public String saveGameRecord(GameRecordVO gameRecord) {
+    public String saveGameRecord(@RequestBody GameRecordVO gameRecord) {
         boolean success = gameRecordService.saveRecord(gameRecord);
         return success ? "success" : "fail";
     }
@@ -71,5 +72,10 @@ public class FrontendController {
     @GetMapping("/getGameRecords")
     public List<GameRecord> getGameRecords() {
         return gameRecordDAO.getAllRecords();
+    }
+
+    @GetMapping("/getTransactions")
+    public List<LOLTransaction> getAllTransactions() {
+        return transactionDAO.getTransactions();
     }
 }

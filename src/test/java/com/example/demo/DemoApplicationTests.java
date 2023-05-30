@@ -1,9 +1,9 @@
 package com.example.demo;
 
 import com.example.demo.data.po.GameRecord;
+import com.example.demo.data.po.Player;
 import com.example.demo.mapper.GameRecordMapper;
 import com.example.demo.mapper.PlayerMapper;
-import com.example.demo.data.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

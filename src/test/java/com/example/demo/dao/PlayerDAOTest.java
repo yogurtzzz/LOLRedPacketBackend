@@ -1,6 +1,6 @@
 package com.example.demo.dao;
 
-import com.example.demo.data.Player;
+import com.example.demo.data.po.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
